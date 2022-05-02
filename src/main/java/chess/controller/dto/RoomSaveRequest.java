@@ -2,12 +2,10 @@ package chess.controller.dto;
 
 public class RoomSaveRequest {
 
-    private final String name;
-    private final String password;
+    private String name;
+    private String password;
 
-    RoomSaveRequest() {
-        this.name = "";
-        this.password = "";
+    private RoomSaveRequest() {
     }
 
     public RoomSaveRequest(String name, String password) {

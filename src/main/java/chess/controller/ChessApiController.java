@@ -28,7 +28,6 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +39,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/rooms", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/rooms")
 public class ChessApiController {
 
     private static final int DEFAULT_ROOM_ID = 0;

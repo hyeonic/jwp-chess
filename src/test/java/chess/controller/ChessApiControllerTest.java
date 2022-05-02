@@ -7,7 +7,6 @@ import chess.RoomEntityFixtures;
 import chess.controller.dto.ChessPieceMoveRequest;
 import chess.controller.dto.RoomDeleteRequest;
 import chess.controller.dto.RoomSaveRequest;
-import chess.dao.JdbcChessPieceDao;
 import chess.dao.JdbcRoomDao;
 import chess.entity.RoomEntity;
 import io.restassured.RestAssured;
@@ -29,17 +28,20 @@ class ChessApiControllerTest {
     private int port;
 
     private final JdbcRoomDao roomDao;
-    private final JdbcChessPieceDao chessPieceDao;
 
     @Autowired
-    public ChessApiControllerTest(final JdbcRoomDao roomDao, final JdbcChessPieceDao chessPieceDao) {
+    public ChessApiControllerTest(final JdbcRoomDao roomDao) {
         this.roomDao = roomDao;
-        this.chessPieceDao = chessPieceDao;
     }
 
     @BeforeEach
     void setUp() {
         RestAssured.port = port;
+    }
+
+    @AfterEach
+    void tearDown() {
+        roomDao.deleteAll();
     }
 
     @DisplayName("GET /api/rooms")
@@ -193,10 +195,5 @@ class ChessApiControllerTest {
                 .statusCode(HttpStatus.OK.value())
                 .body("score.whiteScore", is(38.0F))
                 .body("score.blackScore", is(38.0F));
-    }
-
-    @AfterEach
-    void cleanUp() {
-        roomDao.deleteAll();
     }
 }

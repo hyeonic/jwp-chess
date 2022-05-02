@@ -2,12 +2,10 @@ package chess.controller.dto;
 
 public class ChessPieceMoveRequest {
 
-    private final String from;
-    private final String to;
+    private String from;
+    private String to;
 
-    ChessPieceMoveRequest() {
-        this.from = "";
-        this.to = "";
+    private ChessPieceMoveRequest() {
     }
 
     public ChessPieceMoveRequest(String from, String to) {

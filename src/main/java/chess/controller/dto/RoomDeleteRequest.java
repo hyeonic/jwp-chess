@@ -2,10 +2,9 @@ package chess.controller.dto;
 
 public class RoomDeleteRequest {
 
-    private final String password;
+    private String password;
 
-    RoomDeleteRequest() {
-        this.password = "";
+    private RoomDeleteRequest() {
     }
 
     public RoomDeleteRequest(String password) {
